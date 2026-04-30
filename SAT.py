@@ -360,6 +360,9 @@ class SAT:
         # Boolean variable that stores whether the solver should
         # log progress information while solving the problem
         self._is_log = to_log
+
+        #map from literal to the clauses it occurs in
+        self._literal_occurrences = {}
         
         # The decision heuristic to be used while solving
         # the SAT problem.
@@ -591,6 +594,10 @@ def add_clause(self,clause):
             # literal appearing in the clause
             if self._decider == "MINISAT":
                 self._var_scores[var] += 1
+
+            # adds the id of this clause (self._num_clauses) to the literal_occurences map
+            # initializes with the empty set if variable hasn't occured in the map yet.
+            self._literal_occurrences.setdefault(var + self._num_vars, set()).add(self._num_clauses)
         else:
             # If literal is positive, it is same as its variable 
             var = int(lit)
@@ -605,7 +612,12 @@ def add_clause(self,clause):
             # score of the variable corresonding to the
             # literal appearing in the clause
             if self._decider == "MINISAT":
-                self._var_scores[var] += 1    
+                self._var_scores[var] += 1
+
+            # adds the id of this clause (self._num_clauses) to the literal_occurences map
+            # initializes with the empty set if variable hasn't occured in the map yet.
+            self._literal_occurrences.setdefault(var, set()).add(self._num_clauses)
+
     
     # Set clause id to the number of clauses
     clause_id = self._num_clauses
@@ -1629,7 +1641,15 @@ SAT._backtrack = backtrack
 # The solve method implemented in the next cell is the main method which calls all the methods implemented
 # above and solves the SAT problem.
 
-# In[16]:
+# In[17]:
+def pure_literals(self):
+    for clause in self._clauses:
+        for literal in clause:
+            var = self._get_var_from_literal(literal)
+
+
+
+# In[17]:
 
 
 def solve(self,cnf_filename):
@@ -1709,6 +1729,8 @@ def solve(self,cnf_filename):
                     self._backtrack(0,None)
                     break
 
+                #the rest part is only executed if "CONFLICT" was returned
+
                 # Set first_time to False as we want it 
                 # to be true only once initially
                 first_time = False
@@ -1716,7 +1738,7 @@ def solve(self,cnf_filename):
                 # If there is a conflict, call _analyze_conflict method to 
                 # analyze it
                 temp = time.time()
-                backtrack_level, node_to_add = self._analyze_conflict()
+                backtrack_level, node_to_add = self._analyze_conflict() #learn clause
 
                 # Increase the time spend in analyzing (stored in the stats object)
                 self.stats._analyze_time += time.time()-temp
