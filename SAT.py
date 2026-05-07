@@ -898,6 +898,7 @@ def boolean_constraint_propogation(self,is_first_time):
     
     # If first time, then point to 0
     if is_first_time:
+        self._pure_literals()
         last_assignment_pointer = 0
         
     # Traverse through all the assigned nodes in the stack 
@@ -1731,7 +1732,7 @@ def solve(self,cnf_filename):
         # The main alogrithm loop
         while True:
             
-            # Perform the Boolean Constraint Propogation untill there are no
+            # Perform the Boolean Constraint Propogation until there are no
             # conflicts
             while True:
 
