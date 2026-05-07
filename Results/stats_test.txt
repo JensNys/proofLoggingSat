@@ -1,0 +1,20 @@
+=========================== STATISTICS ===============================
+Solving formula from file:  test/sat/test.cnf
+Vars:4, Clauses:4 Stored Clauses:4
+Input Reading Time:  0.0005412101745605469
+-------------------------------
+Restarts:  0
+Learned clauses:  0
+Decisions made:  3
+Implications made:  1
+Time taken:  0.0009009838104248047
+----------- Time breakup ----------------------
+BCP Time:  5.340576171875e-05
+Decide Time:  3.147125244140625e-05
+Conflict Analyze Time:  0
+Backtrack Time:  0
+-------------------------------
+RESULT:  SAT
+Statistics stored in file:  Results/stats_test.txt
+Satisfying Assignment stored in file:  
+======================================================================

@@ -1643,15 +1643,43 @@ SAT._backtrack = backtrack
 
 # In[17]:
 def pure_literals(self):
-    for clause in self._clauses:
-        for literal in clause:
-            var = self._get_var_from_literal(literal)
+
+    for x in range(self._num_vars):
+        #if x only occurs positively
+        if x in self._literal_occurrences and x+ self._num_vars not in self._literal_occurrences:
+            # set x to true
+            node = AssignedNode(x, True, self._level, None)
+            self._assignment_stack.append(node)
+
+        if x not in self._literal_occurrences and x + self._num_vars not in self._literal_occurrences:
+            #set x to false
+            node = AssignedNode(x, False, self._level, None)
+            self._assignment_stack.append(node)
+
+SAT._pure_literals = pure_literals
+# In[18]:
+def log_satisfiability(self,assignment_dict, output_path)    :
+    with open(output_path, 'w') as f:
+        f.write("pseudo-Boolean proof version 3.0\n")
+        f.write(f"f {self.stats._num_orig_clauses} ;\n")
+
+        literals = []
+        for var, value in assignment_dict.items():
+            if value:
+                literals.append(f"x{var}")
+            else:
+                literals.append(f"~x{var}")
+
+        f.write(f"sol {' '.join(literals)} ;\n")
+        f.write("output NONE ;\n")
+        f.write("conclusion SAT ;\n")
+        f.write("end pseudo-Boolean proof ;\n")
 
 
 
-# In[17]:
+SAT._log_satisfiability = log_satisfiability
 
-
+# In[19]:
 def solve(self,cnf_filename):
     '''
     The main method which is public in the SAT class
@@ -1855,7 +1883,8 @@ def solve(self,cnf_filename):
         # Create a filename for the assignment file
         # eg. Results/assgn_bmc-1.txt
         assgn_file_name = "Results/assgn_" + input_case_name + ".txt"
-        
+        proof_file_name = "proofs/proof_" + input_case_name + ".pbp"
+
         # Set the assgn file name to _output_assignment_file
         # stored in the statistics object
         self.stats._output_assignment_file = assgn_file_name
@@ -1871,6 +1900,7 @@ def solve(self,cnf_filename):
         
         # Open the assignment file
         assgn_file = open(assgn_file_name,"w")
+
         
         # Write the dictionary into the file by
         # serializing it through json.dumps() method
@@ -1878,7 +1908,10 @@ def solve(self,cnf_filename):
         
         # Close the assignment file
         assgn_file.close
+        self._log_satisfiability(assignment_dict, proof_file_name)
         
-    
+
+
+
 # Add the method to the SAT class
 SAT.solve = solve
