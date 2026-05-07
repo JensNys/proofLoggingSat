@@ -1,18 +1,18 @@
 =========================== STATISTICS ===============================
 Solving formula from file:  test\sat\bmc-6.cnf
 Vars:51639, Clauses:368352 Stored Clauses:368002
-Input Reading Time:  2.651402711868286
+Input Reading Time:  2.6610095500946045
 -------------------------------
 Restarts:  0
 Learned clauses:  1810
 Decisions made:  24361
 Implications made:  487456
-Time taken:  21.004354000091553
+Time taken:  27.822972297668457
 ----------- Time breakup ----------------------
-BCP Time:  12.502845287322998
-Decide Time:  0.507704496383667
-Conflict Analyze Time:  3.2808034420013428
-Backtrack Time:  2.043743133544922
+BCP Time:  17.105656623840332
+Decide Time:  0.708174467086792
+Conflict Analyze Time:  4.566452741622925
+Backtrack Time:  2.7556729316711426
 -------------------------------
 RESULT:  SAT
 Statistics stored in file:  Results/stats_bmc-6.txt

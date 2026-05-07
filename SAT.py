@@ -1645,17 +1645,55 @@ SAT._backtrack = backtrack
 # In[17]:
 def pure_literals(self):
 
-    for x in range(self._num_vars):
-        #if x only occurs positively
-        if x in self._literal_occurrences and x+ self._num_vars not in self._literal_occurrences:
-            # set x to true
-            node = AssignedNode(x, True, self._level, None)
-            self._assignment_stack.append(node)
+    for x in range(1,self._num_vars+1):
 
-        if x not in self._literal_occurrences and x + self._num_vars not in self._literal_occurrences:
-            #set x to false
-            node = AssignedNode(x, False, self._level, None)
-            self._assignment_stack.append(node)
+        occurs_positively = x in self._literal_occurrences and len(self._literal_occurrences[x]) >0
+        occurs_negatively = x+self._num_vars in self._literal_occurrences and len(self._literal_occurrences[x+self._num_vars]) >0
+
+
+        if occurs_positively and not occurs_negatively:
+            # Pure positive literal — set variable True
+            value_to_set = True
+            literal_satisfied = x
+        elif occurs_negatively and not occurs_positively:
+            # Pure negative literal — set variable False
+            value_to_set = False
+            literal_satisfied = x+self._num_vars
+        else:
+            continue
+
+
+
+        #assign the variable
+        node = AssignedNode(x, value_to_set, self._level, None)
+        self._variable_to_assignment_nodes[x] = node
+        self._assignment_stack.append(node)
+        node.index = len(self._assignment_stack) - 1
+        self.stats._num_implications += 1
+
+        if self._decider == "VSIDS":
+            self._priority_queue.remove(x)
+            self._priority_queue.remove(x + self._num_vars)
+        if self._decider == "MINISAT":
+            self._priority_queue.remove(x)
+            self._phase[x] = 1 if value_to_set else 0
+
+
+        # Remove all clauses satisfied by this literal from the watch lists.
+        for clause_id in list(self._clauses_watched_by_l.get(literal_satisfied, [])):
+            watchers = self._literals_watching_c.get(clause_id, [])
+            for w in watchers:
+                if w != literal_satisfied:
+                    if clause_id in self._clauses_watched_by_l.get(w, []):
+                        self._clauses_watched_by_l[w].remove(clause_id)
+            # Clear this clause's watcher entry entirely
+            self._literals_watching_c.pop(clause_id, None)
+        self._clauses_watched_by_l[literal_satisfied] = []
+
+        if self._is_log:
+            print("Pure literal implied: ", node)
+
+
 
 SAT._pure_literals = pure_literals
 # In[18]:
