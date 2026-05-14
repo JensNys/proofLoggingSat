@@ -6,8 +6,8 @@ Input Reading Time:  0.0
 Restarts:  0
 Learned clauses:  0
 Decisions made:  0
-Implications made:  6
-Time taken:  0.0009987354278564453
+Implications made:  4
+Time taken:  0.0010006427764892578
 ----------- Time breakup ----------------------
 BCP Time:  0.0
 Decide Time:  0

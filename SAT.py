@@ -904,7 +904,7 @@ def boolean_constraint_propogation(self,is_first_time):
     
     # If first time, then point to 0
     if is_first_time:
-        self._pure_literals()
+        #self._pure_literals()
         last_assignment_pointer = 0
         
     # Traverse through all the assigned nodes in the stack 
@@ -1735,8 +1735,8 @@ def log_unsatisfiability(self, output_path)    :
         for (op, clause) in self._proof:
             literals = []
             for var in clause:
-                if var > self._num_clauses:  # negative literal
-                    actual_var = var - self._num_clauses
+                if var > self._num_vars:  # negative literal
+                    actual_var = var - self._num_vars
                     literals.append(f"+1 ~x{actual_var}")
                 else:  # positive literal
                     literals.append(f"+1 x{var}")
