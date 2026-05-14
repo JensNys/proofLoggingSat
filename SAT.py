@@ -1669,13 +1669,16 @@ def pure_literals(self):
         else:
             continue
 
-
+        self._proof.append(("red",[x,value_to_set]))
 
         #assign the variable
         node = AssignedNode(x, value_to_set, self._level, None)
         self._variable_to_assignment_nodes[x] = node
         self._assignment_stack.append(node)
         node.index = len(self._assignment_stack) - 1
+
+
+
         self.stats._num_implications += 1
 
         if self._decider == "VSIDS":
@@ -1732,17 +1735,29 @@ def log_unsatisfiability(self, output_path)    :
         f.write("pseudo-Boolean proof version 3.0\n")
         f.write(f"f {self.stats._num_orig_clauses} ;\n")
 
-        for (op, clause) in self._proof:
-            literals = []
-            for var in clause:
-                if var > self._num_vars:  # negative literal
-                    actual_var = var - self._num_vars
-                    literals.append(f"+1 ~x{actual_var}")
-                else:  # positive literal
-                    literals.append(f"+1 x{var}")
-            f.write(f"{op} {' '.join(literals)} >= 1 ;\n")
+        for (op, info) in self._proof:
 
-        f.write("rup >= 1 ;")
+            if op == "rup":
+                #info contains the clause that was learned
+                literals = []
+                for var in info:
+                    if var > self._num_vars:  # negative literal
+                        actual_var = var - self._num_vars
+                        literals.append(f"+1 ~x{actual_var}")
+                    else:  # positive literal
+                        literals.append(f"+1 x{var}")
+
+                f.write(f"{op} {' '.join(literals)} >= 1 ;\n")
+            elif op == "red":
+                #info contains the pure literal and its assignment
+                if info[1]:
+                    #pure positive
+                    f.write(f"{op} 1 x{info[0]} >= 1 : x{info[0]} -> {int(info[1])} ;\n")
+                else:
+                    # pure negative
+                    f.write(f"{op} 1 ~x{info[0]} >= 1 : x{info[0]} -> {int(info[1])} ;\n")
+
+        f.write("rup >= 1 ;\n")
         f.write("output NONE ;\n")
         f.write("conclusion UNSAT ;\n")
         f.write("end pseudo-Boolean proof ;\n")

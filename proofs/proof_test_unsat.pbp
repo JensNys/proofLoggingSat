@@ -1,6 +1,7 @@
 pseudo-Boolean proof version 3.0
 f 5 ;
 rup +1 x1 >= 1 ;
-rup >= 1 ;output NONE ;
+rup >= 1 ;
+output NONE ;
 conclusion UNSAT ;
 end pseudo-Boolean proof ;

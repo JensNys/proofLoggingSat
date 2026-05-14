@@ -1,5 +1,8 @@
 pseudo-Boolean proof version 3.0
 f 11 ;
-rup >= 1 ;output NONE ;
+red 1 x4 >= 1 : x4 -> 1 ;
+red 1 ~x5 >= 1 : x5 -> 0 ;
+rup >= 1 ;
+output NONE ;
 conclusion UNSAT ;
 end pseudo-Boolean proof ;
