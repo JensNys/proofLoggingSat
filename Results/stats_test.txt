@@ -1,16 +1,16 @@
 =========================== STATISTICS ===============================
 Solving formula from file:  test\sat\test.cnf
 Vars:4, Clauses:5 Stored Clauses:5
-Input Reading Time:  0.001100778579711914
+Input Reading Time:  0.0019328594207763672
 -------------------------------
 Restarts:  0
 Learned clauses:  0
 Decisions made:  1
 Implications made:  3
-Time taken:  0.0015444755554199219
+Time taken:  550.853306055069
 ----------- Time breakup ----------------------
-BCP Time:  0.00010323524475097656
-Decide Time:  1.6927719116210938e-05
+BCP Time:  550.8513731956482
+Decide Time:  0.0
 Conflict Analyze Time:  0
 Backtrack Time:  0
 -------------------------------
