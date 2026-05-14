@@ -1,18 +1,18 @@
 =========================== STATISTICS ===============================
-Solving formula from file:  test/unsat/unsat.cnf
+Solving formula from file:  test\unsat\unsat.cnf
 Vars:2, Clauses:4 Stored Clauses:4
-Input Reading Time:  0.00028324127197265625
+Input Reading Time:  0.0
 -------------------------------
 Restarts:  0
 Learned clauses:  0
 Decisions made:  1
 Implications made:  3
-Time taken:  0.0004978179931640625
+Time taken:  0.0010232925415039062
 ----------- Time breakup ----------------------
-BCP Time:  4.267692565917969e-05
-Decide Time:  1.5497207641601562e-05
-Conflict Analyze Time:  2.2649765014648438e-05
-Backtrack Time:  1.9788742065429688e-05
+BCP Time:  0.0010232925415039062
+Decide Time:  0.0
+Conflict Analyze Time:  0.0
+Backtrack Time:  0.0
 -------------------------------
 RESULT:  UNSAT
 Statistics stored in file:  Results/stats_unsat.txt

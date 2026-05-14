@@ -364,6 +364,11 @@ class SAT:
 
         #map from literal to the clauses it occurs in
         self._literal_occurrences = {}
+
+        # map from literal to the clauses it occurs in
+        self._literal_occurrences = {}
+
+        self._proof = []
         
         # The decision heuristic to be used while solving
         # the SAT problem.
@@ -1415,7 +1420,8 @@ def analyze_conflict(self):
     # Log if _is_log is true
     if self._is_log:
         print("Conflict Clause: ",conflict_clause)
-            
+
+    self._proof.append(("rup", conflict_clause))
     if len(conflict_clause) > 1:
         # If the length of the learned conflict clause is more than 1
         
@@ -1429,7 +1435,7 @@ def analyze_conflict(self):
         # the new clause to the clauses database
         self._num_clauses += 1
         self._clauses.append(conflict_clause)
-        
+
         # Set the first 2 literals of the clause as its watchers.
         # Add the clause_id to the watch list of the first two literals of the clause
         self._clauses_watched_by_l.setdefault(conflict_clause[0],[]).append(clause_id)
@@ -1719,7 +1725,33 @@ def log_satisfiability(self,assignment_dict, output_path)    :
 
 SAT._log_satisfiability = log_satisfiability
 
+
 # In[19]:
+def log_unsatisfiability(self, output_path)    :
+    with open(output_path, 'w') as f:
+        f.write("pseudo-Boolean proof version 3.0\n")
+        f.write(f"f {self.stats._num_orig_clauses} ;\n")
+
+        for (op, clause) in self._proof:
+            literals = []
+            for var in clause:
+                if var > self._num_clauses:  # negative literal
+                    actual_var = var - self._num_clauses
+                    literals.append(f"+1 ~x{actual_var}")
+                else:  # positive literal
+                    literals.append(f"+1 x{var}")
+            f.write(f"{op} {' '.join(literals)} >= 1 ;\n")
+
+        f.write("rup >= 1 ;")
+        f.write("output NONE ;\n")
+        f.write("conclusion UNSAT ;\n")
+        f.write("end pseudo-Boolean proof ;\n")
+
+
+
+
+SAT._log_unsatisfiability = log_unsatisfiability
+# In[20]:
 def solve(self,cnf_filename):
     '''
     The main method which is public in the SAT class
@@ -1823,6 +1855,8 @@ def solve(self,cnf_filename):
                     # Store the time when the result is 
                     # ready to the stats object
                     self.stats._complete_time = time.time()
+
+
 
                     # Break out of the BCP loop
                     # as the problem is solved
@@ -1949,6 +1983,15 @@ def solve(self,cnf_filename):
         # Close the assignment file
         assgn_file.close
         self._log_satisfiability(assignment_dict, proof_file_name)
+    if self.stats._result == "UNSAT":
+        # If the problem is SAT
+
+        # Create a filename for the assignment file
+        # eg. Results/assgn_bmc-1.txt
+        assgn_file_name = "Results/assgn_" + input_case_name + ".txt"
+        proof_file_name = "proofs/proof_" + input_case_name + ".pbp"
+
+        self._log_unsatisfiability(proof_file_name)
         
 
 
