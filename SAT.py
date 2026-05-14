@@ -904,7 +904,7 @@ def boolean_constraint_propogation(self,is_first_time):
     
     # If first time, then point to 0
     if is_first_time:
-        #self._pure_literals()
+        self._pure_literals()
         last_assignment_pointer = 0
         
     # Traverse through all the assigned nodes in the stack 

@@ -1,0 +1,19 @@
+=========================== STATISTICS ===============================
+Solving formula from file:  test\dubois_unsat\dubois29.cnf
+Vars:87, Clauses:232 Stored Clauses:232
+Input Reading Time:  0.0068264007568359375
+-------------------------------
+Restarts:  0
+Learned clauses:  532
+Decisions made:  1066
+Implications made:  3540
+Time taken:  0.09825301170349121
+----------- Time breakup ----------------------
+BCP Time:  0.048760414123535156
+Decide Time:  0.0065152645111083984
+Conflict Analyze Time:  0.018062353134155273
+Backtrack Time:  0.01543426513671875
+-------------------------------
+RESULT:  UNSAT
+Statistics stored in file:  Results/stats_dubois29.txt
+======================================================================

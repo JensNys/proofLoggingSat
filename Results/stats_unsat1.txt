@@ -7,9 +7,9 @@ Restarts:  0
 Learned clauses:  2
 Decisions made:  3
 Implications made:  7
-Time taken:  0.0010037422180175781
+Time taken:  0.0
 ----------- Time breakup ----------------------
-BCP Time:  0.0010037422180175781
+BCP Time:  0.0
 Decide Time:  0.0
 Conflict Analyze Time:  0.0
 Backtrack Time:  0.0
