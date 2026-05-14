@@ -271,6 +271,7 @@ rup +1 ~x3 +1 x36 +1 x26 +1 x13 +1 x34 +1 ~x5 >= 1 ;
 rup +1 x23 +1 x26 +1 x16 +1 ~x13 >= 1 ;
 rup +1 x34 +1 ~x5 +1 x16 >= 1 ;
 rup +1 ~x16 +1 x23 >= 1 ;
-rup >= 1 ;output NONE ;
+rup >= 1 ;
+output NONE ;
 conclusion UNSAT ;
 end pseudo-Boolean proof ;

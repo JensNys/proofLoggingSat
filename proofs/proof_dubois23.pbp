@@ -329,6 +329,7 @@ rup +1 x21 +1 x24 +1 x19 +1 x29 +1 ~x16 >= 1 ;
 rup +1 x21 +1 x24 +1 x29 +1 x42 +1 ~x3 >= 1 ;
 rup +1 ~x1 +1 x44 +1 ~x29 +1 ~x16 +1 x42 +1 ~x3 >= 1 ;
 rup +1 x21 +1 x24 +1 ~x19 +1 ~x29 +1 x16 >= 1 ;
-rup >= 1 ;output NONE ;
+rup >= 1 ;
+output NONE ;
 conclusion UNSAT ;
 end pseudo-Boolean proof ;

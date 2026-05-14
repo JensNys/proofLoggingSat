@@ -1,18 +1,18 @@
 =========================== STATISTICS ===============================
 Solving formula from file:  test\dubois_unsat\dubois20.cnf
 Vars:60, Clauses:160 Stored Clauses:160
-Input Reading Time:  0.004061460494995117
+Input Reading Time:  0.006002187728881836
 -------------------------------
 Restarts:  0
 Learned clauses:  270
 Decisions made:  588
 Implications made:  1634
-Time taken:  0.051885366439819336
+Time taken:  0.047774553298950195
 ----------- Time breakup ----------------------
-BCP Time:  0.019234180450439453
-Decide Time:  0.005088329315185547
-Conflict Analyze Time:  0.008798837661743164
-Backtrack Time:  0.014702558517456055
+BCP Time:  0.014185190200805664
+Decide Time:  0.0004470348358154297
+Conflict Analyze Time:  0.024117708206176758
+Backtrack Time:  0.003022432327270508
 -------------------------------
 RESULT:  UNSAT
 Statistics stored in file:  Results/stats_dubois20.txt

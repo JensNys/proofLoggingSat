@@ -480,6 +480,7 @@ rup +1 ~x48 +1 x3 +1 ~x22 +1 x24 +1 x27 >= 1 ;
 rup +1 x29 +1 x22 +1 x32 +1 x24 +1 x27 +1 x17 +1 ~x34 >= 1 ;
 rup +1 x24 +1 x3 +1 ~x48 >= 1 ;
 rup +1 ~x48 +1 x3 +1 x32 +1 x19 >= 1 ;
-rup >= 1 ;output NONE ;
+rup >= 1 ;
+output NONE ;
 conclusion UNSAT ;
 end pseudo-Boolean proof ;

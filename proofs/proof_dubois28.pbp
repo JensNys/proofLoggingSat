@@ -641,6 +641,7 @@ rup +1 x24 +1 x31 +1 ~x21 +1 ~x6 +1 x49 >= 1 ;
 rup +1 ~x6 +1 x49 +1 x24 +1 x31 >= 1 ;
 rup +1 ~x1 +1 x4 +1 x54 +1 x49 +1 x6 >= 1 ;
 rup +1 ~x58 +1 ~x1 +1 ~x4 +1 x54 +1 ~x51 >= 1 ;
-rup >= 1 ;output NONE ;
+rup >= 1 ;
+output NONE ;
 conclusion UNSAT ;
 end pseudo-Boolean proof ;

@@ -1686,6 +1686,7 @@ rup +1 x58 +1 ~x1 +1 x62 +1 x56 +1 x3 >= 1 ;
 rup +1 x58 +1 ~x1 +1 x56 +1 x3 >= 1 ;
 rup +1 ~x16 +1 ~x43 +1 x56 +1 x58 +1 ~x1 >= 1 ;
 rup +1 ~x1 +1 x58 +1 ~x62 +1 ~x3 +1 ~x56 >= 1 ;
-rup >= 1 ;output NONE ;
+rup >= 1 ;
+output NONE ;
 conclusion UNSAT ;
 end pseudo-Boolean proof ;

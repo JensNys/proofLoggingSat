@@ -35095,6 +35095,7 @@ rup +1 ~x89 +1 x15 +1 ~x102 +1 ~x1 +1 x98 >= 1 ;
 rup +1 ~x13 +1 x89 +1 ~x10 +1 x19 +1 x80 >= 1 ;
 rup +1 x89 +1 ~x10 +1 x80 +1 ~x75 >= 1 ;
 rup +1 x15 +1 x84 +1 ~x87 +1 x85 +1 x14 +1 x89 +1 ~x10 >= 1 ;
-rup >= 1 ;output NONE ;
+rup >= 1 ;
+output NONE ;
 conclusion UNSAT ;
 end pseudo-Boolean proof ;
