@@ -365,9 +365,7 @@ class SAT:
         #map from literal to the clauses it occurs in
         self._literal_occurrences = {}
 
-        # map from literal to the clauses it occurs in
-        self._literal_occurrences = {}
-
+        #list storing proof steps
         self._proof = []
         
         # The decision heuristic to be used while solving
@@ -1844,7 +1842,7 @@ def solve(self,cnf_filename):
                     self._backtrack(0,None)
                     break
 
-                #the rest part is only executed if "CONFLICT" was returned
+                #the rest is only executed if "CONFLICT" was returned
 
                 # Set first_time to False as we want it 
                 # to be true only once initially

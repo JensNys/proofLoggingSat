@@ -1,13 +1,13 @@
 =========================== STATISTICS ===============================
 Solving formula from file:  test\unsat\unsat.cnf
 Vars:2, Clauses:4 Stored Clauses:4
-Input Reading Time:  0.0
+Input Reading Time:  0.024393320083618164
 -------------------------------
 Restarts:  0
 Learned clauses:  0
 Decisions made:  1
 Implications made:  3
-Time taken:  0.0
+Time taken:  0.024393320083618164
 ----------- Time breakup ----------------------
 BCP Time:  0.0
 Decide Time:  0.0
