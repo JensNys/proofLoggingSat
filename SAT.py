@@ -1667,7 +1667,6 @@ def pure_literals(self):
         else:
             continue
 
-        self._proof.append(("red",[x,value_to_set]))
 
         #assign the variable
         node = AssignedNode(x, value_to_set, self._level, None)
@@ -1746,14 +1745,7 @@ def log_unsatisfiability(self, output_path)    :
                         literals.append(f"+1 x{var}")
 
                 f.write(f"{op} {' '.join(literals)} >= 1 ;\n")
-            elif op == "red":
-                #info contains the pure literal and its assignment
-                if info[1]:
-                    #pure positive
-                    f.write(f"{op} 1 x{info[0]} >= 1 : x{info[0]} -> {int(info[1])} ;\n")
-                else:
-                    # pure negative
-                    f.write(f"{op} 1 ~x{info[0]} >= 1 : x{info[0]} -> {int(info[1])} ;\n")
+
 
         f.write("rup >= 1 ;\n")
         f.write("output NONE ;\n")

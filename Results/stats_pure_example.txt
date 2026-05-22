@@ -1,15 +1,15 @@
 =========================== STATISTICS ===============================
 Solving formula from file:  test\unsat\pure_example.cnf
 Vars:3, Clauses:4 Stored Clauses:3
-Input Reading Time:  0.013536930084228516
+Input Reading Time:  0.0
 -------------------------------
 Restarts:  0
 Learned clauses:  0
 Decisions made:  0
 Implications made:  3
-Time taken:  0.01554727554321289
+Time taken:  0.0010097026824951172
 ----------- Time breakup ----------------------
-BCP Time:  0.002010345458984375
+BCP Time:  0.0010097026824951172
 Decide Time:  0
 Conflict Analyze Time:  0.0
 Backtrack Time:  0
