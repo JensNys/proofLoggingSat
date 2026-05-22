@@ -1,7 +1,7 @@
 
 # CDCL-SAT with Pure Literals and VeriPB proof logging
 
-I edited [this](https://github.com/sgomber/CDCL-SAT) CDCL solver by adding the pure literals optimization technique on the input and by emitting a Veripb proof log. All edits in the solver happen in the [SAT.py file](SAT.py)
+I edited [this](https://github.com/sgomber/CDCL-SAT) CDCL solver by adding the pure literals optimization technique on the input and by emitting a [VeriPB](https://gitlab.com/MIAOresearch/software/VeriPB) proof log. All edits in the solver happen in the [SAT.py file](SAT.py)
 
 The solver can be ran by running 
 ```
