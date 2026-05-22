@@ -30,7 +30,7 @@ If you are running the code on a windows machine, you can test all files in each
 .\test_dubois.bat
 ```
 
-These run the solver and immediately check whether the proof verifies the program. Testing the unsat directory finishes instantly. Testing the dubois benchmark takes a while but if you remove [dubois100.cnf](dubois100.cnf) and [dubois50.cnf](dubois100.cnf) it can finish quite quickly.
+These run the solver and immediately check whether the proof verifies the program. Testing the unsat directory finishes instantly. Testing the dubois benchmark takes a while but if you remove [dubois100.cnf](test/dubois_unsat/dubois100.cnf) and [dubois50.cnf](test/dubois_unsat/dubois50.cnf) it can finish quite quickly.
 
 
 # Original README:
