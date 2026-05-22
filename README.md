@@ -16,7 +16,7 @@ For eg.
 python3 solver.py False MINISAT None test/sat/bmc-2.cnf
 ```
 
-The proof will then be stored in the proofs directory with as name proof_<filename>.pbp
+The proof will then be stored in the proofs directory with as name proof_\<filename>.pbp
 
 
 In the test folder you can find directories of test input DIMACS files.
